@@ -17,7 +17,7 @@ const users = [
 //   callback(updatedUsers);
 // };
 
-const logger = updatedUsers => console.table(updatedUsers);
+
 
 /*
  * Сейчас работает так
@@ -37,6 +37,8 @@ const toggleUserState = (allUsers, userName) => {
     })
 
 };
+
+const logger = updatedUsers => console.table(updatedUsers);
 /*
  * Должно работать так
  */

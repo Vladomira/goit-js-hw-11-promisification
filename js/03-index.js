@@ -6,9 +6,7 @@ const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-
-
-const logSuccess = (id, time) => {
+const logSuccess = ({id, time}) => {
   console.log(`Transaction ${id} processed in ${time}ms`);
 };
 
@@ -21,17 +19,17 @@ const makeTransaction = (transaction) => {
     const delay = randomIntegerFromInterval(200, 500)
 
     return new Promise ((resolve, reject) => {
-        setTimeout(() => {
-            const canProcess = Math.random() > 0.3;   
-                    
-            if (canProcess) {
-              resolve(logSuccess(transaction.id, delay));
+      const canProcess = Math.random() > 0.3;  
+
+        setTimeout(() => {        
+          if (canProcess) {
+              resolve({ id: transaction.id, time: delay });
             } else {
-              reject(logError(transaction.id));
+              reject(transaction.id);
             }
           }, delay);
     }) 
-  };
+  };  
 
 /*
  * Должно работать так
